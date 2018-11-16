@@ -1,0 +1,19 @@
+.employee-list-container {
+    align-content: center;
+    border: 1px solid grey;
+    padding: 1rem;
+    margin-top: 6rem;
+    font-size: 1.75rem;
+    :first-child {
+        font-weight: 500;
+        color: darkgrey;
+    }
+    .list-row {
+        display: flex;
+        flex-direction: row;
+        .list-col {
+            flex: 1;
+            flex-direction: column;
+        }
+    }
+}
