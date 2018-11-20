@@ -1,0 +1,68 @@
+<div class="employee-operation-container">
+    <h1>{{employeeOperationType}}</h1>
+    <div class="vertical-form">
+        <form [formGroup]="employeeOperationForm" id="employee-operation-form" autocomplete="off" novalidate>
+            <div class="field">
+                <span>Employee Name</span>
+                <div class="field-container">
+                    <input formControlName="empName" type="text" id="empName" name="empName" />
+                </div>
+                <!-- validations -->
+                <div *ngIf="(!employeeOperationForm?.controls['empName'].valid && employeeOperationForm?.controls['empName'].touched) || (employeeOperationForm?.controls['empName'].untouched && submitted)"
+                        class="error-message">
+                        <div *ngIf="employeeOperationForm?.controls['empName'].errors?.required">
+                            Feild is Required
+                        </div>
+                        <div *ngIf="employeeOperationForm?.controls['empName'].errors?.minLength">
+                                Should contain atleast 4 characters
+                        </div>
+                </div>
+
+            </div>
+
+            <div class="field">
+                <span>Phone No.</span>
+                <div class="field-container">
+                    <input formControlName="phoneNo" type="text" id="phoneNo" name="phoneNo" />
+                </div>
+                <!-- validations -->
+                <div *ngIf="(!employeeOperationForm?.controls['phoneNo'].valid && employeeOperationForm?.controls['phoneNo'].touched) || (employeeOperationForm?.controls['phoneNo'].untouched && submitted)"
+                        class="error-message">
+                        <div *ngIf="employeeOperationForm?.controls['phoneNo'].errors?.required">
+                            Feild is Required
+                        </div>
+                        <div *ngIf="employeeOperationForm?.controls['phoneNo'].errors?.pattern">
+                            Valid phone number is required
+                        </div>
+                </div>
+            </div>
+
+            <div class="field">
+                <span>Address Line1</span>
+                <div class="field-container">
+                    <input formControlName="addressLine1" type="text" id="addressLine1" name="addressLine1" />
+                </div>
+            </div>
+            <div class="field">
+                <span>Address Line2</span>
+                <div class="field-container">
+                    <input formControlName="addressLine2" type="text" id="addressLine2" name="addressLine2" />
+                </div>
+            </div>
+            <div class="field">
+                <span>Street</span>
+                <div class="field-container">
+                    <input formControlName="street" type="text" id="street" name="street" />
+                </div>
+            </div>
+            <div class="field">
+                <span>Postal Code</span>
+                <div class="field-container">
+                    <input formControlName="postalCode" type="text" id="postalCode" name="postalCode" />
+                </div>
+            </div>
+
+            <button (click)="performOpertaion();">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,26 +1,34 @@
 <div class="employee-list-container">
     <h1>Employee List</h1>
-    
-    <div class="list-row">
-        <div class="list-col">Id</div>
-        <div class="list-col">Name</div>
-        <div class="list-col">Phone</div>
-        <div class="list-col">City</div>
-        <div class="list-col">Address 1</div>
-        <div class="list-col">Address 2</div>
-        <div class="list-col">Postal Code</div>
-        <div class="list-col">Edit</div>
+    <div class="add-emp-btn">
+        <button (click)="addEmployee()">Add Employee</button>
     </div>
+    <input type="textbox" [(ngModel)]="searchText" placeholder="Search..." class="searchBar" (keyup)="filterData()">
+    <div class="table-container">
+        <div class="list-row">
+            <div class="list-col">Id</div>
+            <div class="list-col">Name</div>
+            <div class="list-col">Phone</div>
+            <div class="list-col">City</div>
+            <div class="list-col">Address 1</div>
+            <div class="list-col">Address 2</div>
+            <div class="list-col">Postal Code</div>
+            <div class="list-col">Edit</div>
+        </div>
 
+        <div *ngFor="let employee of employeeList" class="list-row">
+            <!-- | filterList:searchText ; -->
+            <div class="list-col">{{employee.id}}</div>
+            <div class="list-col">{{employee.name}}</div>
+            <div class="list-col">{{employee.phone}}</div>
+            <div class="list-col">{{employee.address.city}}</div>
+            <div class="list-col">{{employee.address.address_line1}}</div>
+            <div class="list-col">{{employee.address.address_line2}}</div>
+            <div class="list-col">{{employee.address.postal_code}}</div>
+            <div class="list-col"><a [routerLink]="['/editEmployee',employee.id]">Edit</a></div>
+        </div>
 
-    <div *ngFor="let employee of employeeList;let i=index" class="list-row">
-        <div class="list-col">{{employee.id}}</div>
-        <div class="list-col">{{employee.name}}</div>
-        <div class="list-col">{{employee.phone}}</div>
-        <div class="list-col">{{employee.address.city}}</div>
-        <div class="list-col">{{employee.address.address_line1}}</div>
-        <div class="list-col">{{employee.address.address_line2}}</div>
-        <div class="list-col">{{employee.address.postal_code}}</div>
-        <div class="list-col">Edit</div>
+        <div *ngIf="employeeList.length === 0">No Records Found</div>
+
     </div>
 </div>

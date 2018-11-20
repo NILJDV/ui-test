@@ -1,0 +1,18 @@
+.employee-operation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .vertical-form {
+        padding-top: 2rem;
+        .field {
+            margin-bottom: 1rem;
+            .field-container {
+                margin-top : 0.625rem;
+            }
+            .error-message {
+                color: red;  
+            }
+        }
+    }
+}

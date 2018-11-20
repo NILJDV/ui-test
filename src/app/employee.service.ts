@@ -43,4 +43,38 @@ export class EmployeeService {
     getEmployeeList() {
         return this.data;
     }
+
+    getEmployee(empId) {
+        return this.data.find(d => {
+            return Number(d.id) === Number(empId);
+        });
+    }
+
+    addDataToEmployeeList(dataObj) {
+        const obj = {
+            'id': dataObj.empID,
+            'name': dataObj.empName,
+            'phone': dataObj.phoneNo,
+            'address': {
+                'city': dataObj.street,
+                'address_line1': dataObj.addressLine1,
+                'address_line2': dataObj.addressLine2,
+                'postal_code': dataObj.postalCode
+                }
+            };
+        this.data.push(obj);
+    }
+
+    updateEmployeeList(dataObj) {
+        this.data.forEach( d => {
+            if (d.id === dataObj.empID) {
+                d.name = dataObj.empName;
+                d.phone = dataObj.phoneNo;
+                d.address.address_line1 = dataObj.addressLine1;
+                d.address.address_line2 = dataObj.addressLine2;
+                d.address.city = dataObj.street;
+                d.address.postal_code = dataObj.postalCode;
+            }
+        });
+    }
 }
